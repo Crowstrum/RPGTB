@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Items.Affix;
+using UnityEngine;
 using System.Collections;
 using Items;
 using Helpers;
@@ -6,11 +8,14 @@ using Helpers;
 public class Weapon :  BaseItem
 {
 	#region Fields
-		public GameObject _weaponGameObj;
-		public WeaponType _type;
+
+    public List<BaseAffix> ItemAffixs = new List<BaseAffix>();
+        GameObject _weaponGameObj;
+		WeaponType _type;
 		WeaponHands _hands;
 		Quality _quality;
 		ItemType _itemType;
+    private WeaponObj _weaponObj;
 		int _attackVal;
 		int _attackBonus;
 		int _damageVal;
@@ -20,40 +25,51 @@ public class Weapon :  BaseItem
 	#region Properties
 		public GameObject WeaponGameObj {
 				get { return _weaponGameObj;}
-				protected set { _weaponGameObj = value;} 
+				 set { _weaponGameObj = value;} 
 		}
 		public WeaponType TypeOfWeapon {
 				get { return _type;}
-				protected set { _type = value;} 
+				 set { _type = value;} 
 		}
 		public WeaponHands WeaponHanded {
 				get { return _hands;}
-				protected set { _hands = value;} 
+				 set { _hands = value;} 
 		}
 		public Quality WeaponQuality {
 				get { return _quality;}
-				protected set { _quality = value;} 
+				 set { _quality = value;} 
 		}
 		public ItemType WeaponItemType {
 				get { return _itemType;}
-				protected set { _itemType = value;} 
+				 set { _itemType = value;} 
 		}
 		public int AttackValue {
 				get { return _attackVal;}
-				protected set { _attackVal = value;} 
+				 set { _attackVal = value;} 
 		}
 		public int AttackBonus {
 				get { return _attackBonus;}
-				protected set { _attackBonus = value;} 
+				 set { _attackBonus = value;} 
 		}
 		public int DamageValue {
 				get { return _damageVal;}
-				protected set { _damageVal = value;} 
+				 set { _damageVal = value;} 
 		}
 		public int DamageBonus {
 				get { return _damageBonus;}
-				protected set { _damageBonus = value;} 
+				 set { _damageBonus = value;} 
 		}
+
+    public WeaponObj WeaponObj
+    {
+        get { return _weaponObj; }
+        protected set { _weaponObj = value; }
+    }
+
+    void Start()
+    {
+       
+    }
 	#endregion
 
 

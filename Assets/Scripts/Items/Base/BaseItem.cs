@@ -40,6 +40,15 @@ namespace Items
 				Fabled
 		}
 
+    public enum WeaponObj
+    {
+        Sword,
+        Bow,
+        Dagger,
+        Axe,
+        Wand
+    }
+
 		public abstract class BaseItem : MonoBehaviour
 		{
 		#region Item Fields
@@ -61,7 +70,7 @@ namespace Items
 				/// <value>The name.</value>
 				public string Name {
 						get { return _itemName;}
-						protected set { _itemName = value;}
+						 set { _itemName = value;}
 				}
 				/// <summary>
 				/// Gets or sets the buy price.
@@ -69,7 +78,7 @@ namespace Items
 				/// <value>The buy price.</value>
 				public int BuyPrice {
 						get { return _buyPrice;}
-						protected set { _buyPrice = value;}
+						 set { _buyPrice = value;}
 				}
 				/// <summary>
 				/// Gets or sets the sell price.
@@ -77,7 +86,7 @@ namespace Items
 				/// <value>The sell price.</value>
 				public int SellPrice {
 						get { return _sellPrice;}
-						protected set { _sellPrice = value;}
+						 set { _sellPrice = value;}
 				}
 				/// <summary>
 				/// Gets or sets a value indicating whether this <see cref="Items.BaseItem"/> is equipped.
@@ -85,7 +94,7 @@ namespace Items
 				/// <value><c>true</c> if equipped; otherwise, <c>false</c>.</value>
 				public bool Equipped {
 						get { return _equipped;}
-						protected set { _equipped = value;}
+						 set { _equipped = value;}
 				}
 				/// <summary>
 				/// Gets or sets a value indicating whether this instance has sockets.
@@ -93,7 +102,7 @@ namespace Items
 				/// <value><c>true</c> if this instance has sockets; otherwise, <c>false</c>.</value>
 				public bool HasSockets {
 						get { return _hasSockets;}
-						protected set { _hasSockets = value;}
+						 set { _hasSockets = value;}
 				}
 				/// <summary>
 				/// Gets or sets the sockets.
@@ -101,7 +110,7 @@ namespace Items
 				/// <value>The sockets.</value>
 				public GameObject[] Sockets {
 						get { return _sockets;}
-						protected set { _sockets = value;}
+						 set { _sockets = value;}
 				}
 				/// <summary>
 				/// Gets the socket item.
@@ -127,7 +136,7 @@ namespace Items
 				/// <value>The number of sockets.</value>
 				public int NumberOfSockets {
 						get { return _numberOfSockets;}
-						protected set { _numberOfSockets = value;}
+						 set { _numberOfSockets = value;}
 				}
 				/// <summary>
 				/// Gets or sets the affixs.
@@ -135,7 +144,7 @@ namespace Items
 				/// <value>The affixs.</value>
 				public GameObject[] Affixs {
 						get { return _affixs;}
-						protected set { _affixs = value;}
+						 set { _affixs = value;}
 				}
 		#endregion
 
