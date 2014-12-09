@@ -9,12 +9,12 @@ namespace Items
 				Weapon,
 				Armor
 		}
-		public enum WeaponHands
+		public enum WeaponHanded
 		{
 				OneHanded,
 				TwoHanded
 		}
-		public enum WeaponType
+		public enum WeaponRange
 		{
 				Melee,
 				Ranged
@@ -36,25 +36,32 @@ namespace Items
 		{
 				Poor,
 				Common,
+				Uncommon,
 				Rare,
 				Fabled
 		}
 
-    public enum WeaponObj
-    {
-        Sword,
-        Bow,
-        Dagger,
-        Axe,
-        Wand
-    }
+		public enum WeaponType
+		{
+				Sword,
+				Bow,
+				Dagger,
+				Axe,
+				Wand
+		}
 
 		public abstract class BaseItem : MonoBehaviour
 		{
 		#region Item Fields
-				string _itemName;
-				int _buyPrice;
-				int _sellPrice;
+				public Affix.AffixItemType affixType;
+				public string _itemName;
+				public int _buyPrice;
+				public int _sellPrice;
+				public Quality _quality;
+				public WeaponHanded _handed;
+				public WeaponRange _weaponRange;
+				public WeaponType _typeOfWeapon;
+				public ItemType _itemType;
 				bool _equipped;
 				bool _hasSockets;
 				GameObject[] _sockets;
@@ -70,7 +77,7 @@ namespace Items
 				/// <value>The name.</value>
 				public string Name {
 						get { return _itemName;}
-						 set { _itemName = value;}
+						set { _itemName = value;}
 				}
 				/// <summary>
 				/// Gets or sets the buy price.
@@ -78,7 +85,7 @@ namespace Items
 				/// <value>The buy price.</value>
 				public int BuyPrice {
 						get { return _buyPrice;}
-						 set { _buyPrice = value;}
+						set { _buyPrice = value;}
 				}
 				/// <summary>
 				/// Gets or sets the sell price.
@@ -86,7 +93,7 @@ namespace Items
 				/// <value>The sell price.</value>
 				public int SellPrice {
 						get { return _sellPrice;}
-						 set { _sellPrice = value;}
+						set { _sellPrice = value;}
 				}
 				/// <summary>
 				/// Gets or sets a value indicating whether this <see cref="Items.BaseItem"/> is equipped.
@@ -94,7 +101,7 @@ namespace Items
 				/// <value><c>true</c> if equipped; otherwise, <c>false</c>.</value>
 				public bool Equipped {
 						get { return _equipped;}
-						 set { _equipped = value;}
+						set { _equipped = value;}
 				}
 				/// <summary>
 				/// Gets or sets a value indicating whether this instance has sockets.
@@ -102,7 +109,7 @@ namespace Items
 				/// <value><c>true</c> if this instance has sockets; otherwise, <c>false</c>.</value>
 				public bool HasSockets {
 						get { return _hasSockets;}
-						 set { _hasSockets = value;}
+						set { _hasSockets = value;}
 				}
 				/// <summary>
 				/// Gets or sets the sockets.
@@ -110,7 +117,7 @@ namespace Items
 				/// <value>The sockets.</value>
 				public GameObject[] Sockets {
 						get { return _sockets;}
-						 set { _sockets = value;}
+						set { _sockets = value;}
 				}
 				/// <summary>
 				/// Gets the socket item.
@@ -136,7 +143,7 @@ namespace Items
 				/// <value>The number of sockets.</value>
 				public int NumberOfSockets {
 						get { return _numberOfSockets;}
-						 set { _numberOfSockets = value;}
+						set { _numberOfSockets = value;}
 				}
 				/// <summary>
 				/// Gets or sets the affixs.
@@ -144,7 +151,7 @@ namespace Items
 				/// <value>The affixs.</value>
 				public GameObject[] Affixs {
 						get { return _affixs;}
-						 set { _affixs = value;}
+						set { _affixs = value;}
 				}
 		#endregion
 
@@ -160,6 +167,22 @@ namespace Items
 				*/
 		#endregion
 
+				public virtual void SetQuality (Quality quality)
+				{
+						_quality = quality;
+				}
+				public virtual void SetHanded (WeaponHanded handed)
+				{
+						_handed = handed;
+				}
+				public virtual void SetQuality (WeaponRange range)
+				{
+						_weaponRange = range;
+				}
+				public virtual void SetQuality (ItemType type)
+				{
+						_itemType = type;
+				}
 		#region Abstract Methods
 				
 				public abstract GameObject Clone (); //returns item from manager

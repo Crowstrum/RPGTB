@@ -124,7 +124,7 @@ namespace rds
 				/// </summary>
 				public RDSTable rdsTable { get; set; }
           #endregion
-  
+				
           #region TOSTRING
 				/// <summary>
 				/// Returns a <see cref="System.String"/> that represents this instance.

@@ -9,69 +9,36 @@ public class Weapon :  BaseItem
 {
 	#region Fields
 
-    public List<BaseAffix> ItemAffixs = new List<BaseAffix>();
-        GameObject _weaponGameObj;
-		WeaponType _type;
-		WeaponHands _hands;
-		Quality _quality;
-		ItemType _itemType;
-    private WeaponObj _weaponObj;
-		int _attackVal;
-		int _attackBonus;
-		int _damageVal;
-		int _damageBonus;
+		public List<BaseAffix> ItemAffixs = new List<BaseAffix> ();
+		GameObject _weaponGameObj;
+		public int _baseDamageValMinLower;
+		public int _baseDamageValMinHigher;
+		public int _baseDamageValMaxLower;
+		public int _baseDamageValMaxHigher;
+		public int _basedamageBonus;
+		public int _baseDamageMin;
+		public int _baseDamageMax;
+		public int _itemLevel;
 	#endregion
 
-	#region Properties
-		public GameObject WeaponGameObj {
-				get { return _weaponGameObj;}
-				 set { _weaponGameObj = value;} 
-		}
-		public WeaponType TypeOfWeapon {
-				get { return _type;}
-				 set { _type = value;} 
-		}
-		public WeaponHands WeaponHanded {
-				get { return _hands;}
-				 set { _hands = value;} 
-		}
-		public Quality WeaponQuality {
-				get { return _quality;}
-				 set { _quality = value;} 
-		}
-		public ItemType WeaponItemType {
-				get { return _itemType;}
-				 set { _itemType = value;} 
-		}
-		public int AttackValue {
-				get { return _attackVal;}
-				 set { _attackVal = value;} 
-		}
-		public int AttackBonus {
-				get { return _attackBonus;}
-				 set { _attackBonus = value;} 
-		}
-		public int DamageValue {
-				get { return _damageVal;}
-				 set { _damageVal = value;} 
-		}
-		public int DamageBonus {
-				get { return _damageBonus;}
-				 set { _damageBonus = value;} 
+		void Start ()
+		{
+				CalculatedBaseStats ();
+				ApplyAfixToItem ();
 		}
 
-    public WeaponObj WeaponObj
-    {
-        get { return _weaponObj; }
-        protected set { _weaponObj = value; }
-    }
-
-    void Start()
-    {
-       
-    }
-	#endregion
-
+		public void CalculatedBaseStats ()
+		{
+				_baseDamageMin = Random.Range (_baseDamageValMinLower, _baseDamageValMinHigher);
+				_baseDamageMax = Random.Range (_baseDamageValMaxLower, _baseDamageValMaxHigher);
+		}
+		
+		public void ApplyAfixToItem ()
+		{
+				foreach (BaseAffix affix in ItemAffixs) {
+						affix.ApplyAffixWeapon (this);
+				}
+		}
 
 
 	#region implemented abstract members of BaseItem
